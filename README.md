@@ -3,83 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Compatibility Checker</title>
+  <title>CarFixHelper</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1a1a1a;
+      color: #f4f4f4;
       text-align: center;
-      padding: 50px;
+      padding: 40px;
     }
 
-    input {
-      margin: 10px;
-      padding: 8px;
+    h1 {
+      color: #ff3c00;
+      font-size: 3em;
+    }
+
+    .car-image {
+      width: 90%;
+      max-width: 600px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .form-section {
+      margin-top: 40px;
+    }
+
+    select, button {
+      padding: 12px;
       font-size: 1em;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    select {
+      width: 250px;
     }
 
     button {
-      padding: 10px 20px;
-      font-size: 1em;
-      background: crimson;
+      background-color: #ff3c00;
       color: white;
-      border: none;
       cursor: pointer;
     }
 
-    #result {
-      margin-top: 20px;
-      font-size: 1.2em;
-      font-weight: bold;
+    footer {
+      margin-top: 60px;
+      font-size: 0.9em;
+      color: #999;
     }
   </style>
 </head>
 <body>
 
-  <h1>Compatibility Checker</h1>
+  <h1>CarFixHelper 🚘</h1>
+  <p>Diagnose common car problems and get quick help to fix them.</p>
+  
+  <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be" alt="Car Repair" class="car-image" />
 
-  <form id="compatibilityForm">
-    <input type="text" id="name1" placeholder="Your Name" required />
-    <input type="text" id="name2" placeholder="Their Name" required />
-    <button type="submit">Check Compatibility</button>
-  </form>
+  <div class="form-section">
+    <h2>Select a Car Problem</h2>
+    <form id="problemForm">
+      <select id="problemSelect" required>
+        <option value="">-- Choose a problem --</option>
+        <option value="engine.html">Engine won’t start</option>
+        <option value="brakes.html">Brake problems</option>
+        <option value="overheating.html">Car is overheating</option>
+        <option value="battery.html">Battery issues</option>
+        <option value="tires.html">Flat or low tire</option>
+      </select>
+      <br />
+      <button type="submit">Fix It 🔧</button>
+    </form>
+  </div>
 
-  <div id="result"></div>
+  <footer>
+    &copy; 2025 CarFixHelper. Built to help you fix it fast.
+  </footer>
 
   <script>
-    // Feature 1: Input form handling
-    document.getElementById('compatibilityForm').addEventListener('submit', function (e) {
+    document.getElementById('problemForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const name1 = document.getElementById('name1').value.trim();
-      const name2 = document.getElementById('name2').value.trim();
-
-      if (!name1 || !name2) return alert('Please enter both names.');
-
-      // Feature 2: Basic compatibility algorithm (random)
-      const score = Math.floor(Math.random() * 101);
-      const message = generateMessage(score);
-
-      // Feature 3: Display result dynamically
-      document.getElementById('result').innerText = `${name1} ❤️ ${name2}: ${score}% Compatible\n${message}`;
-
-      // Feature 4: Save to localStorage (advanced feature)
-      saveHistory(name1, name2, score);
+      const page = document.getElementById('problemSelect').value;
+      if (page) {
+        window.location.href = page;
+      } else {
+        alert("Please select a problem to continue.");
+      }
     });
-
-    // Feature 5 (greater complexity): Generate custom message
-    function generateMessage(score) {
-      if (score > 80) return "A perfect match!";
-      if (score > 60) return "Looking pretty good!";
-      if (score > 40) return "There's potential.";
-      return "Might want to reconsider...";
-    }
-
-    // Advanced Feature 2: Save compatibility data to localStorage
-    function saveHistory(name1, name2, score) {
-      const history = JSON.parse(localStorage.getItem('compatibilityHistory')) || [];
-      history.push({ name1, name2, score, time: new Date().toLocaleString() });
-      localStorage.setItem('compatibilityHistory', JSON.stringify(history));
-    }
   </script>
 
 </body>
