@@ -6,92 +6,85 @@
   <title>CarFixHelper</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
       background-color: #1a1a1a;
-      color: #f4f4f4;
+      color: white;
       text-align: center;
       padding: 40px;
     }
 
     h1 {
-      color: #ff3c00;
-      font-size: 3em;
+      color: #ff4d4d;
+      font-size: 2.5em;
     }
 
-    .car-image {
-      width: 90%;
-      max-width: 600px;
+    img.banner {
+      width: 100%;
+      max-height: 250px;
+      object-fit: cover;
       border-radius: 10px;
-      margin-top: 20px;
-    }
-
-    .form-section {
-      margin-top: 40px;
+      box-shadow: 0 4px 12px rgba(255, 77, 77, 0.6);
     }
 
     select, button {
-      padding: 12px;
+      padding: 10px;
       font-size: 1em;
-      margin: 10px;
+      margin-top: 20px;
       border: none;
       border-radius: 5px;
     }
 
     select {
-      width: 250px;
+      background-color: #333;
+      color: white;
     }
 
     button {
-      background-color: #ff3c00;
+      background-color: #ff4d4d;
       color: white;
+      margin-left: 10px;
       cursor: pointer;
     }
 
-    footer {
-      margin-top: 60px;
+    .footer {
+      margin-top: 50px;
       font-size: 0.9em;
-      color: #999;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
 
-  <h1>CarFixHelper 🚘</h1>
-  <p>Diagnose common car problems and get quick help to fix them.</p>
-  
-  <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be" alt="Car Repair" class="car-image" />
+  <h1>🚗 CarFixHelper</h1>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Nissan_GT-R_black.jpg" alt="Car Banner" class="banner" />
 
-  <div class="form-section">
-    <h2>Select a Car Problem</h2>
-    <form id="problemForm">
-      <select id="problemSelect" required>
-        <option value="">-- Choose a problem --</option>
-        <option value="engine.html">Engine won’t start</option>
-        <option value="brakes.html">Brake problems</option>
-        <option value="overheating.html">Car is overheating</option>
-        <option value="battery.html">Battery issues</option>
-        <option value="tires.html">Flat or low tire</option>
-      </select>
-      <br />
-      <button type="submit">Fix It 🔧</button>
-    </form>
-  </div>
+  <p>Welcome to CarFixHelper! Select your car problem to find step-by-step fixes and guides.</p>
 
-  <footer>
-    &copy; 2025 CarFixHelper. Built to help you fix it fast.
-  </footer>
+  <label for="issueSelector">Choose an issue:</label>
+  <select id="issueSelector">
+    <option value="">-- Select a car issue --</option>
+    <option value="engine.html">Engine Problems</option>
+    <option value="brakes.html">Brake Issues</option>
+    <option value="battery.html">Battery Troubles</option>
+    <option value="transmission.html">Transmission Problems</option>
+    <option value="ac.html">AC Not Working</option>
+  </select>
+  <button onclick="goToFix()">Fix It!</button>
 
   <script>
-    document.getElementById('problemForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const page = document.getElementById('problemSelect').value;
+    function goToFix() {
+      const page = document.getElementById("issueSelector").value;
       if (page) {
         window.location.href = page;
       } else {
-        alert("Please select a problem to continue.");
+        alert("Please select a car issue to fix.");
       }
-    });
+    }
   </script>
+
+  <div class="footer">
+    &copy; 2025 CarFixHelper | Made for auto lovers by Atahan Ors
+  </div>
 
 </body>
 </html>
